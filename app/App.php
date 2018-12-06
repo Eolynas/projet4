@@ -1,10 +1,5 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
  * Description of App
@@ -22,4 +17,24 @@ class App {
         }
         return self::$_instance;
     }
+    
+    public function getDb(){
+        $config = Config::getInstance(ROOT . '/config/config.php');
+        if(is_null($this->db_instance)){
+            $this->db_instance = new MysqlDatabase($config->get('db_name'), $config->get('db_user'), $config->get('db_pass'), $config->get('db_host'));
+        }
+        return $this->db_instance;
+    }
+    
+    public static function load(){
+        session_start();
+        require '/app/Autoloader.php';
+        App\Autoloader::register();
+        require '/core/Autoloader.php';
+        Core\Autoloader::register();
+    }
+    
+    
+    
+    
 }
