@@ -24,12 +24,8 @@ if($page[0] == 'admin'){
 $controller = new $controller();
 $controller->$action();
 
-
-$config = new \Core\Config;
-var_dump($config);
-
-
-
+var_dump($controller);
+        
 
 
 // On recupere le get et on le stock dans $page
