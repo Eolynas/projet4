@@ -3,6 +3,7 @@
 namespace App\Table;
 
 use Core\Database\Mysqldatabase;
+use App;
 /**
  * Description of Table
  *
@@ -14,6 +15,13 @@ class Table {
     protected $db;
 
 
-   
+    public function test() {
+        $db->getDb();
+        var_dump($db);
+        $this->db = $db;
+        var_dump($this->db);
+    }
+    
+    
     
 }

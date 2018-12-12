@@ -21,7 +21,13 @@ class AppController{
         
     }
     
-    
+    protected function render($list) {
+        ob_start();
+        extract($list);
+        require('view/posts/posts.php');
+        $content = ob_get_clean();
+        require('view/templates/templateDefault.php');
+    }
     
     
     
