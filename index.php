@@ -24,8 +24,8 @@ if($page[0] == 'admin'){
 $controller = new $controller();
 $controller->$action();
 
-var_dump($controller);
-        
+
+
 
 
 // On recupere le get et on le stock dans $page

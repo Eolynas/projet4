@@ -1,7 +1,7 @@
 <?php
 
-use core\Config;
-use Core\Database\Mysqldatabase;
+use Core\Config;
+use Core\Database\MysqlDatabase;
 /**
  * Description of App
  *
@@ -29,9 +29,11 @@ class App {
         
     }
     
+   
+    
     public function getDb(){
-        $config = \Core\Config::getInstance('config/configDb.php');
-        if($this->db_instance === NULL){
+        $config = Config::getInstance(ROOT . '/config/config.php');
+        if(is_null($this->db_instance)){
             $this->db_instance = new MysqlDatabase($config->get('db_name'), $config->get('db_user'), $config->get('db_pass'), $config->get('db_host'));
         }
         return $this->db_instance;
