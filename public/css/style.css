@@ -1,0 +1,105 @@
+
+@font-face {
+	font-family: "UbuntuMono";
+	src: url('../fonts/UbuntuMono-R.ttf');
+}
+@font-face {
+	font-family: "UbuntuMono";
+	font-style: italic;
+	src: url('../fonts/UbuntuMono-RI.ttf');
+}
+@font-face {
+	font-family: "UbuntuMono";
+	font-weight: bold;
+	src: url('../fonts/UbuntuMono-B.ttf');
+}
+
+body {
+    background-color: #fbfbfb !important;
+    font-family: "UbuntuMono",  Arial, Helvetica, Verdana, sans-serif;
+}
+/********************
+        Carousel
+********************/
+
+.carousel-inner> .item> img {
+  largeur: 1640px;
+  hauteur: 1360px;
+}
+
+/********************
+        Posts
+********************/
+
+.blog {
+    margin-top: 100px;
+}
+
+.posts{
+    background-color: #fff;
+    box-shadow: 0 0 6px 6px rgba(195,195,195,.12);
+    padding: 25px 60px;
+    margin-bottom: 30px;
+}
+
+.posts h2 {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.posts span {
+    font-style: italic;
+    font-weight: normal;
+}
+
+.posts_content{
+    margin-top: 30px;
+}
+
+.posts .btn {
+    margin-top: 30px;
+}
+
+.img_post {
+    width: 100%;
+}
+
+/********************
+        WIDGET
+********************/
+
+.sidebar{
+    margin-top: 100px;
+}
+.widget{
+    width: 100%;
+    height: 200px;
+    background-color: #fff;
+    box-shadow: 0 0 6px 6px rgba(195,195,195,.12);
+    padding: 25px 60px;
+    margin-bottom: 50px;
+}
+
+
+/********************
+        FOOTER
+********************/
+
+footer {
+    height: 50px;
+    background-color: #2e2e2e;
+    color: #dadada;
+    display: flex;
+}
+
+.footerText {
+    margin: auto;
+}
+
+.designBy {
+    text-align: right;
+}
+
+.designBy a {
+    color: #fff;
+}
