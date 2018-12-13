@@ -16,8 +16,8 @@ class PostsController extends AppController{
     
     public function index () {
         // On charge les données de la table Posts
+        //$list = $this->posts->saveLastPosts();
         $list = $this->posts->lastPosts();
-        // On charge les données de la table Categories
         $list = compact('list');
         $list = $this->render($list);
 

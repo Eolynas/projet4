@@ -15,13 +15,4 @@ class Table {
     protected $db;
 
 
-    public function test() {
-        $db->getDb();
-        var_dump($db);
-        $this->db = $db;
-        var_dump($this->db);
-    }
-    
-    
-    
 }
