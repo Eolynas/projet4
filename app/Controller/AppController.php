@@ -14,12 +14,12 @@ class AppController{
         
     }
     
-    protected function render($list) {
+    protected function render($list, $view, $template) {
         ob_start();
         extract($list);
-        require('view/posts/posts.php');
+        require('view/posts/' . $view . '.php');
         $content = ob_get_clean();
-        require('view/templates/templateDefault.php');
+        require('view/templates/' . $template . '.php');
     }
     
     

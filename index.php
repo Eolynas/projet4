@@ -5,7 +5,7 @@ require '/app/App.php';
 App::load();
 
 // On verifier en 1er si il y a un get d'envoyer, et le stock dans la variable $actions
-if(isset($actions)){
+if(isset($_GET['p'])){
     $page = $_GET['p'];
 }else{
     $page = 'posts.index';

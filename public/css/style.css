@@ -65,6 +65,59 @@ body {
 }
 
 /********************
+        COMMENTAIRE
+********************/
+.post {
+    background-color: #fff;
+    box-shadow: 0 0 6px 6px rgba(195,195,195,.12);
+    padding: 25px 60px;
+    padding-bottom: 50px;
+    margin-bottom: 30px;
+    border-bottom: 5px solid #eaeaea;
+}
+
+.comments {
+    background-color: #fff;
+    box-shadow: 0 0 6px 6px rgba(195,195,195,.12);
+    padding: 25px 60px;
+    
+}
+
+.comment {
+    list-style: none;
+    border-bottom: 2px solid #c3c0c0;
+    padding-bottom: 15px; 
+    
+}
+
+.comment h4 {
+    color: #fa9f0baa;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding-top: 15px;
+}
+
+.comment p {
+    display: flex;
+    padding: 0;
+}
+
+.comment p span {
+    font-style: italic;
+    font-size: 14px;
+    color: #888888;
+    padding: 0;
+}
+
+.comment p {
+    margin-top: 15px; 
+}
+
+.form_comment {
+    margin-top: 30px;
+}
+
+/********************
         WIDGET
 ********************/
 
