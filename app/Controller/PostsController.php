@@ -15,6 +15,8 @@ class PostsController extends AppController{
     }
     
     public function index () {
+//        $App = \App::getInstance();
+//        $App->getDb();
         // On charge les données de la table Posts
         //$list = $this->posts->saveLastPosts();
         $list = $this->posts->lastPosts();

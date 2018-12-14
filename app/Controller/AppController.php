@@ -10,7 +10,7 @@ class AppController{
     
     protected function loadPosts() {
         //Instance de la class PostTable
-        $this->posts = new \App\Table\PostTable;
+        $this->posts = new \App\Table\PostTable(App::getInstance()->getDb());
         
     }
     

@@ -4,23 +4,21 @@ namespace App\Table;
 
 
 /**
- * Description of PostsTable
+ * Description: requete SQL pour afficher tout les posts sur la page d'accueil
  *
  * @author Eddy
  */
 class PostTable extends Table{
     
-    //Nom de la table pour les posts
-    protected $tb_posts = 'posts';
-    protected $tb_images = 'images';
-    protected $tb_users = 'users';
+    
 
     /**
      * Récupère les derniers articles
      * @return array
      */
     public function lastPosts(){
-        $db = new \PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+        //$db = new \PDO("mysql:host=localhost;dbname=projet4;charset=utf8", "root", "");
+        $db = new \PDO('mysql:host='.$this->db->get('db_host').';dbname='.$this->db->get('db_name').';charset=utf8', $this->db->get('db_user'), $this->db->get('db_pass'));
         $req = $db->query(""
                 . "SELECT "
                 . "$this->tb_posts.id, "
