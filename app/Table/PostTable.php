@@ -17,8 +17,7 @@ class PostTable extends Table{
      * @return array
      */
     public function lastPosts(){
-        //$db = new \PDO("mysql:host=localhost;dbname=projet4;charset=utf8", "root", "");
-        $db = new \PDO('mysql:host='.$this->db->get('db_host').';dbname='.$this->db->get('db_name').';charset=utf8', $this->db->get('db_user'), $this->db->get('db_pass'));
+        $db = $this->pdo;
         $req = $db->query(""
                 . "SELECT "
                 . "$this->tb_posts.id, "
