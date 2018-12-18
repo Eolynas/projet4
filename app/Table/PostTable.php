@@ -9,7 +9,7 @@ namespace App\Table;
  * @author Eddy
  */
 class PostTable extends Table{
-    
+    protected $table = 'posts';
     
 
     /**
@@ -38,13 +38,13 @@ class PostTable extends Table{
                     . "ON $this->tb_posts.id_author = $this->tb_users.id "
                 . "LEFT JOIN $this->tb_categories "
                     . "ON $this->tb_posts.id_category = $this->tb_categories.id "
-                . "INNER JOIN $this->tb_comments "
+                . "LEFT JOIN $this->tb_comments "
                     . "ON $this->tb_comments.id_post = $this->tb_posts.id "
                 . "GROUP BY $this->tb_posts.id "
                 . "ORDER BY $this->tb_posts.date DESC");
         //var_dump($req);
         $res = $req->fetchAll();
-        var_dump($res);
+        //var_dump($res);
         
         return $res;
     }
@@ -95,6 +95,29 @@ class PostTable extends Table{
         $req->execute(array($postsId));
         $comment = $req->fetchAll();
         return $comment;
+    }
+    
+    
+    
+    public function insertPost($title, $author, $content, $category, $img){
+        $db = $this->pdo;
+        $req = $db->query("INSERT INTO $this->tb_posts"
+                . "title, "
+                . "id_author, "
+                . "content, "
+                . "date, "
+                . "id_category, "
+                . "id_img) "
+                . "VALUES ("
+                . "$title, "
+                . "$author, "
+                . "$content, "
+                . "DATE NOW(), "
+                . "$category, "
+                . "$img");
+        var_dump($req);
+        
+        return $req;
     }
 
 }

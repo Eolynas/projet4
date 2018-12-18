@@ -16,6 +16,7 @@ class Table {
     protected $tb_users = 'users';
     protected $tb_categories = 'categories';
     protected $tb_comments = 'comments';
+    protected $table;
     protected $db;
     protected $pdo;
 
@@ -24,5 +25,15 @@ class Table {
         $this->db = $db;
         $this->pdo = new \PDO('mysql:host='.$this->db->get('db_host').';dbname='.$this->db->get('db_name').';charset=utf8', $this->db->get('db_user'), $this->db->get('db_pass'));
     }
+    
+    public function delete($id){
+        $db = $this->pdo;
+        $req = $db->query("DELETE FROM $this->table WHERE id=$id");
+        var_dump($req);
+        
+        return $req;
+    }
+    
+    
 
 }

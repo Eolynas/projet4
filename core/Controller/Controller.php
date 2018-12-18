@@ -6,12 +6,14 @@ class Controller{
 
     
 
-    protected function render(){
+    protected function render($list, $view, $template) {
         ob_start();
-        
-        require('view/posts/posts.php');
+        //var_dump($list);
+        extract($list);
+        //var_dump($list);
+        require('view/'. $view . '.php');
         $content = ob_get_clean();
-        require('view/templates/templateDefault.php');
+        require('view/templates/' . $template . '.php');
     }
 
    

@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-
+use Core\Controller\Controller;
 
 class PostsController extends AppController{
     
@@ -25,13 +25,9 @@ class PostsController extends AppController{
         //var_dump($list['id']);
         $nbComments = $this->comments->countComments(1);
         //var_dump($nbComments);
-        $list = $this->render(compact('list', 'nbComments'), 'posts', 'default');
+        $list = $this->render(compact('list', 'nbComments'), 'posts/posts', 'default');
         //var_dump($list);
         
-            
-            
-        
-
     }
     
     /**
@@ -43,7 +39,7 @@ class PostsController extends AppController{
         $comments = $this->posts->comment($_GET['id']);
         $nbComments = $this->comments->countComments($_GET['id']);
         //$post = compact('post');
-        $post = $this->render(compact('post', 'comments', 'nbComments'), 'show', 'show');
+        $post = $this->render(compact('post', 'comments', 'nbComments'), 'posts/show', 'show');
     }
     
     

@@ -32,13 +32,7 @@ class App {
         Core\Autoloader::register();
     }
 
-    public function getTablePosts() {
-        var_dump(App\Table\PostTable);
-        $class_name = \App\Table\PostTable;
-        var_dump($class_name);
-        return new $class_name($this->getDb());
-    }
-
+    
     /**
      * Description: instance de la connexion à la BDD
      * return PDO statment

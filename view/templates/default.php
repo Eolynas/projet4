@@ -35,7 +35,7 @@
                         <a class="nav-link" href="#">menu 3</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">menu 4</a>
+                        <a class="nav-link" href="index.php?p=admin.posts.index">admin</a>
                     </li>
 
 
