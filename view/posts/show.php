@@ -2,9 +2,27 @@
 <?php ?>
 <div class="post">
     <h2><a><?= $post['title']; ?></a></h2>
-
+    
     <span>Publié le <?= $post['date']; ?> par <?= $post['author']; ?> </span>
+    <?php foreach ($nbComments as $nbComment):
+    //var_dump($nbComment['nbComments']); 
+        
+    if($nbComment['nbComments'] == 1){
+        echo 'Il y a ' . $nbComment['nbComments'] . ' commentaire';
+    } elseif ($nbComment['nbComments'] > 1){
+        echo 'Il y a ' . $nbComment['nbComments'] . ' commentaires';
+    } else {
+        echo 'Il y aucun commentaire';
+    }  
+    ?>
+    
+            
 
+    <?php endforeach; ?>
+    
+    
+    
+    
     <img src="<?= $post['url']; ?>" alt="<?= $post['alt']; ?>" class="img_post">
 
     <div class="posts_content"><?= $post['content']; ?></div>

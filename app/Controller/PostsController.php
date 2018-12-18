@@ -10,6 +10,7 @@ class PostsController extends AppController{
     public function __construct(){
         $this->loadPosts();
         //$this->loadCategories();
+        $this->loadComments();
 
     }
     
@@ -21,8 +22,15 @@ class PostsController extends AppController{
     public function index () {
         // On charge les données de la table Posts
         $list = $this->posts->lastPosts();
-        $list = compact('list');
-        $list = $this->render($list, 'posts', 'default');
+        //var_dump($list['id']);
+        $nbComments = $this->comments->countComments(1);
+        //var_dump($nbComments);
+        $list = $this->render(compact('list', 'nbComments'), 'posts', 'default');
+        //var_dump($list);
+        
+            
+            
+        
 
     }
     
@@ -33,8 +41,9 @@ class PostsController extends AppController{
     public function show() {
         $post = $this->posts->findPost($_GET['id']);
         $comments = $this->posts->comment($_GET['id']);
+        $nbComments = $this->comments->countComments($_GET['id']);
         //$post = compact('post');
-        $post = $this->render(compact('post', 'comments'), 'show', 'show');
+        $post = $this->render(compact('post', 'comments', 'nbComments'), 'show', 'show');
     }
     
     

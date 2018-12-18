@@ -29,7 +29,8 @@ class PostTable extends Table{
                 . "$this->tb_posts.id_img,"
                 . "$this->tb_images.url,"
                 . "$this->tb_images.alt,"
-                . "CONCAT($this->tb_users.name, ' ', $this->tb_users.surname) AS author "
+                . "CONCAT($this->tb_users.name, ' ', $this->tb_users.surname) AS author, "
+                . "COUNT(CASE WHEN comments.id_post=posts.id THEN comments.id END ) AS nbComments "
                 . "FROM $this->tb_posts "
                 . "LEFT JOIN $this->tb_images "
                     . "ON $this->tb_posts.id_img = $this->tb_images.id "
@@ -37,10 +38,19 @@ class PostTable extends Table{
                     . "ON $this->tb_posts.id_author = $this->tb_users.id "
                 . "LEFT JOIN $this->tb_categories "
                     . "ON $this->tb_posts.id_category = $this->tb_categories.id "
+                . "INNER JOIN $this->tb_comments "
+                    . "ON $this->tb_comments.id_post = $this->tb_posts.id "
+                . "GROUP BY $this->tb_posts.id "
                 . "ORDER BY $this->tb_posts.date DESC");
+        //var_dump($req);
+        $res = $req->fetchAll();
+        var_dump($res);
         
-        return $req;
+        return $res;
     }
+    
+    
+    
     
     public function findPost($postsId) {
         $db = $this->pdo;
