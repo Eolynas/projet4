@@ -3,14 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp64/www/Projet_4/view/posts/show.php</file>
+            <file>file:/C:/wamp64/www/Projet_4/view/admin/index.php</file>
             <file>file:/C:/wamp64/www/Projet_4/app/Table/commentTable.php</file>
+            <file>file:/C:/wamp64/www/Projet_4/view/templates/admin.php</file>
             <file>file:/C:/wamp64/www/Projet_4/app/Table/Table.php</file>
-            <file>file:/C:/wamp64/www/Projet_4/view/posts/posts.php</file>
             <file>file:/C:/wamp64/www/Projet_4/app/Table/PostTable.php</file>
             <file>file:/C:/wamp64/www/Projet_4/public/css/style.css</file>
-            <file>file:/C:/wamp64/www/Projet_4/app/Controller/AppController.php</file>
-            <file>file:/C:/wamp64/www/Projet_4/app/Controller/PostsController.php</file>
+            <file>file:/C:/wamp64/www/Projet_4/app/Controller/Admin/PostsController.php</file>
         </group>
     </open-files>
 </project-private>

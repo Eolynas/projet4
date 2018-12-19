@@ -13,7 +13,7 @@ namespace App\Table;
  *
  * @author Eddy
  */
-class commentTable extends Table{
+class CommentTable extends Table{
     
 
     public function countComments ($postsId) {
@@ -30,11 +30,4 @@ class commentTable extends Table{
     }
     
     
-    public function getListComments(){
-        $db = $this->pdo;
-        $req = $db->query("SELECT posts.title titre_news, comments.id, comments.author, comments.content, comments.id_post FROM comments INNER JOIN posts ON comments.id_post= posts.id ORDER BY id DESC");
-        $res = $req->fetchAll();
-        var_dump($res);
-        return $res;
-    }
 }

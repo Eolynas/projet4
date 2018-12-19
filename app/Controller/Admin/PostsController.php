@@ -12,6 +12,7 @@ class PostsController extends AppController {
     
     public function __construct(){
         $this->loadPosts();
+        $this->loadCategory();
         
 
     }
@@ -23,15 +24,30 @@ class PostsController extends AppController {
         
     }
     
+    public function postEdit() {
+        $list = $this->posts->insertPost($_POST['title'], $_POST['content'], $_POST['category']);
+        var_dump($list);
+        $list = $this->posts->lastPosts();
+        $list = $this->render(compact('list'), 'admin/index', 'admin');
+    }
+    
+    public function getCategory(){
+        $category = $this->category->getListCategory();
+        $list = $this->render($category, 'admin/categories', 'admin');
+    }
+    
     public function delete () {
         $post = $this->posts->delete($_GET['id']);
         $list = $this->posts->lastPosts();
         $list = $this->render(compact('list'), 'admin/index', 'admin');
     }
     
-    public function updatePost () {
-        echo 'UPDATE';
+    public function edit () {
+        $category = $this->category->getListCategory();
+        //var_dump($category);
+        $list = $this->render($category, 'admin/edit', 'admin');
     }
+    
     
     public function insertPost(){
         

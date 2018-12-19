@@ -17,6 +17,11 @@ class AppController extends Controller{
         $this->posts = new \App\Table\PostTable(App::getInstance()->getDb());
         
     }
+    protected function loadCategory() {
+        //Instance de la class PostTable
+        $this->category = new \App\Table\CategoryTable(App::getInstance()->getDb());
+        
+    }
     
     
 }

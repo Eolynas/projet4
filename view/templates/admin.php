@@ -26,13 +26,13 @@
 
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Accueil <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="index.php?p=admin.posts.index">Accueil <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Ajouter un articles</a>
+                        <a class="nav-link" href="index.php?p=admin.posts.edit">Ajouter un articles</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Catégorie</a>
+                        <a class="nav-link" href="index.php?p=admin.posts.getCategory">Catégorie</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Images</a>
