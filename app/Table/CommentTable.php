@@ -13,10 +13,11 @@ namespace App\Table;
  *
  * @author Eddy
  */
-class CommentTable extends Table{
-    
+class CommentTable extends Table {
 
-    public function countComments ($postsId) {
+    protected $table = 'comments';
+
+    public function countComments($postsId) {
         $db = $this->pdo;
         $req = $db->prepare(""
                 . "SELECT "
@@ -28,6 +29,68 @@ class CommentTable extends Table{
         //var_dump($comments);
         return $comments;
     }
+
+    public function insertComment($postId, $content, $author) {
+        $db = $this->pdo;
+        $req = $db->prepare(""
+                . "INSERT INTO $this->tb_comments "
+                . "(id_post, content, author) "
+                . "VALUES (?, ?, ?)");
+        $req->execute(array($postId, $content, $author));
+        //var_dump($req);
+        return $req;
+    }
+
+    public function lastComments() {
+        $db = $this->pdo;
+        $req = $db->query(""
+                . "SELECT "
+                . "* "
+                . "FROM $this->tb_comments "
+                . "ORDER BY $this->tb_comments.id_post DESC");
+        //var_dump($req);
+        $res = $req->fetchAll();
+        //var_dump($res);
+
+        return $res;
+    }
+
+    public function getComment($id) {
+        $db = $this->pdo;
+        $req = $db->prepare(""
+                . "SELECT * "
+                . "FROM $this->tb_comments "
+                . "WHERE $this->tb_comments.id = ? ");
+        //var_dump($req);
+        $req->execute(array($id));
+        $comments = $req->fetch();
+        //var_dump($comments);
+        return $comments;
+    }
     
+    public function updateComment($content, $id){
+        $db = $this->pdo;
+        $req = $db->prepare(""
+                . "UPDATE $this->tb_comments "
+                . "SET content= ?, "
+                . "comment_signal=0 "
+                . "WHERE $this->tb_comments.id = ?");
+        //var_dump($req);
+        $req->execute(array($content, $id));
+        //var_dump($req);
+        return $req;
+    }
     
+    public function signal($id){
+        $db = $this->pdo;
+        $req = $db->prepare(""
+                . "UPDATE $this->tb_comments "
+                . "SET comment_signal=1 "
+                . "WHERE $this->tb_comments.id = ?");
+        //var_dump($req);
+        $req->execute(array($id));
+        //var_dump($req);
+        return $req;
+    }
+
 }

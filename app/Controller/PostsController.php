@@ -42,6 +42,13 @@ class PostsController extends AppController{
         $post = $this->render(compact('post', 'comments', 'nbComments'), 'posts/show', 'show');
     }
     
-    
+    public function addComments() {
+        $comments = $this->comments->insertComment($_GET['id'], $_POST['content'], $_POST['author']);
+        $post = $this->posts->findPost($_GET['id']);
+        $comments = $this->posts->comment($_GET['id']);
+        $nbComments = $this->comments->countComments($_GET['id']);
+        //$post = compact('post');
+        $post = $this->render(compact('post', 'comments', 'nbComments'), 'posts/show', 'show');
+    }
 
 }

@@ -14,6 +14,6 @@ foreach ($list as $post):
 
         <div class="posts_content"><?= substr($post['content'], 0, 250); ?> ...</div>
 
-        <a class="btn btn-secondary" href="#" role="button">Lire la suite</a>
+        <a class="btn btn-secondary" href="index.php?p=posts.show&id=<?= $post['id']; ?>" role="button">Lire la suite</a>
     </div>  
 <?php endforeach; ?>

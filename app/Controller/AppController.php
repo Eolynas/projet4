@@ -15,7 +15,7 @@ class AppController extends Controller{
     }
     protected function loadComments() {
         //Instance de la class commentTable
-        $this->comments = new \App\Table\commentTable(App::getInstance()->getDb());
+        $this->comments = new \App\Table\CommentTable(App::getInstance()->getDb());
     }
 
 

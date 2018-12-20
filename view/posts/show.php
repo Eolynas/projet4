@@ -2,28 +2,36 @@
 <?php ?>
 <div class="post">
     <h2><a><?= $post['title']; ?></a></h2>
-    
+
     <span>Publié le <?= $post['date']; ?> par <?= $post['author']; ?> </span>
-    <?php foreach ($nbComments as $nbComment):
-    //var_dump($nbComment['nbComments']); 
-        
-    if($nbComment['nbComments'] == 1){
-        echo 'Il y a ' . $nbComment['nbComments'] . ' commentaire';
-    } elseif ($nbComment['nbComments'] > 1){
-        echo 'Il y a ' . $nbComment['nbComments'] . ' commentaires';
-    } else {
-        echo 'Il y aucun commentaire';
-    }  
-    ?>
-    
-            
+    <?php
+    foreach ($nbComments as $nbComment):
+        //var_dump($nbComment['nbComments']); 
+
+        if ($nbComment['nbComments'] == 1) {
+            echo 'Il y a ' . $nbComment['nbComments'] . ' commentaire';
+        } elseif ($nbComment['nbComments'] > 1) {
+            echo 'Il y a ' . $nbComment['nbComments'] . ' commentaires';
+        } else {
+            echo 'Il y aucun commentaire';
+        }
+        ?>
+
+
 
     <?php endforeach; ?>
+
+
+
+    <?php 
+    if ($post['url'] != null){
+        ?>
+        <img src="<?= $post['url']; ?>" alt="<?= $post['alt']; ?>" class="img_post">
+        
+    <?php
+    }
     
-    
-    
-    
-    <img src="<?= $post['url']; ?>" alt="<?= $post['alt']; ?>" class="img_post">
+    ?>
 
     <div class="posts_content"><?= $post['content']; ?></div>
 
@@ -31,25 +39,27 @@
 <div class="comments">
     <h3>Commentaires</h3>
     <div>
-        <?php foreach ($comments as $comment):
+        <?php
+        foreach ($comments as $comment):
+            //var_dump($comment);
             ?>
 
             <div class="comment">
                 <h4><?= $comment['author']; ?></h4>
-                <p class="container"><span class="col-6"><?= $comment['date']; ?></span><a class="col-2 offset-4 btn btn-secondary" href="#" role="button">Signaler</a></p>
+                <p class="container"><span class="col-6"><?= $comment['date_comment']; ?></span><a class="col-2 offset-4 btn btn-secondary" href="index.php?p=Comments.signal&id=<?= $comment['id'] ?>&post_id=<?= $post['id'] ?>" role="button">Signaler</a></p>
                 <p><?= $comment['content']; ?></p>
             </div>
 
         <?php endforeach; ?>
     </div>
-    <form class="form_comment">
+    <form class="form_comment" method="post" action="index.php?p=posts.addComments&id=<?= $post['id']; ?>">
         <div class="form-group">
             <label for="formName">Pseudo</label>
-            <input type="text" class="form-control" id="formName" aria-describedby="emailHelp" placeholder="pseudo" required>
+            <input type="text" class="form-control" id="formName" placeholder="pseudo" name="author" required>
         </div>
         <div class="form-group">
             <label for="formComment">Votre commentaire</label>
-            <textarea class="form-control" id="formComment" rows="6" placeholder="Votre commentaire" required></textarea>
+            <textarea class="form-control" id="formComment" rows="6" placeholder="Votre commentaire" name="content" required></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Envoyer</button>
     </form>

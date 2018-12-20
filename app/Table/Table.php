@@ -29,7 +29,7 @@ class Table {
     public function delete($id){
         $db = $this->pdo;
         $req = $db->query("DELETE FROM $this->table WHERE id=$id");
-        var_dump($req);
+        //var_dump($req);
         
         return $req;
     }

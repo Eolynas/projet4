@@ -9,7 +9,7 @@
         <meta name="author" content="Eddy Hubert">
         <link rel="icon" href="../../favicon.ico">
 
-        <title><?= App::getInstance()->title; ?></title>
+        <title>DashBoard Admin</title>
 
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -19,34 +19,8 @@
     </head>
 
     <body>
-        <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
-            <a class="navbar-brand" href="index.php">DashBoard Administration</a>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="index.php?p=admin.posts.index">Accueil <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php?p=admin.posts.edit">Ajouter un articles</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php?p=admin.posts.getCategory">Catégorie</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Images</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Commentaires</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php">retour sur le site</a>
-                    </li>
-                </ul>
-
-            </div>
-        </nav>
+        
+        <?php include 'navbarAdmin.php'; ?>
         
         <section class="container">
             <div class="row">
