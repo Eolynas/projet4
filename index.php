@@ -1,6 +1,9 @@
 <?php
 
-require '/app/App.php';
+$patch = "app/App.php";
+require $patch;
+
+
 //On charge l'autoloader
 App::load();
 
