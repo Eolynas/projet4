@@ -1,6 +1,7 @@
 <h1>BIENVENUE SUR LE DASHBOARD ADMIN</h1>
+<div class="messageComment">
 
-
+</div>
 <h3>Commentaire signalé</h3>
 
 
@@ -12,7 +13,6 @@
             <th scope="col">Contenu</th>
             <th scope="col">Auteur</th>
             <th scope="col">Date</th>
-            <th scope="col">Commentaire signaler</th>
         </tr>
     </thead>
     <tbody>
@@ -20,7 +20,7 @@
         foreach ($list as $comment):
             //var_dump($comment);
 
-            if ($comment['comment_signal'] == '1') {
+            if ($comment['signalComment'] == 1) {
                 ?>    
                 <tr class="table-danger">
                     <th scope="row"><?= $comment['id']; ?></th>
@@ -28,9 +28,12 @@
                     <td><?= $comment['content']; ?></td>
                     <td><?= $comment['author']; ?></td>
                     <td><?= $comment['date_comment']; ?></td>
-                    <td><?= $comment['comment_signal']; ?></td>
-                    <td><a class="btn btn-secondary" href="index.php?p=admin.Comments.edit&id=<?= $comment['id']; ?>" role="button">Modifier</a></td>
-                    <td><a class="btn btn-secondary" href="index.php?p=admin.Comments.delete&id=<?= $comment['id']; ?>" role="button">Supprimer</a></td>
+                    <td>
+                        <a class="btn btn-secondary modifComment" href="index.php?p=admin.Comments.edit&id=<?=$comment['id']; ?>" role="button">Modifier</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-secondary deleteComment" href="index.php?p=admin.Comments.delete&id=<?=$comment['id']; ?>" role="button">Supprimer</a>
+                    </td>
                 </tr> 
                 <?php
             }
@@ -67,8 +70,10 @@
                 <td><?= $comment['author']; ?></td>
                 <td><?= $comment['date_comment']; ?></td>
                 <td><?php
-        if ($comment['comment_signal'] == '1') {
-            echo'Le commentaire à était signalé';
+        if ($comment['signalComment'] == '1') {
+            echo'<span class="commentSignal">Le commentaire à était signalé</span>';
+        } else {
+            echo'<span class="commentApproved">Le commentaire à était approuvé</span>';
         }
             ?>
                 </td>

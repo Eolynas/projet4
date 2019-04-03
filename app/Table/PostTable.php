@@ -37,7 +37,10 @@ class PostTable extends Table
         return $res;
     }
 
-
+    /**
+     * Récupère l'article selectionné
+     * @return array
+     */
     public function findPost($postsId)
     {
         $db = $this->pdo;
@@ -74,9 +77,19 @@ class PostTable extends Table
                             . "INSERT INTO $this->tb_posts "
                             . "(title, content, id_category) "
                             . "VALUES (?, ?, ?)");*/
-        $req = $db->prepare(" INSERT INTO posts (title, content, id_category) VALUE (?, ?, ?)");
+        $req = $db->prepare(" INSERT INTO posts (posts.title, posts.id_author, posts.content, posts.id_category, posts.date) VALUE (?, 1, ?, ?, NOW())");
         $req->execute(array($title, $content, $category));
-        var_dump($req);
+        //var_dump($req);
+        return $req;
+    }
+
+    public function updatePost($id, $title, $content)
+    {
+        $db = $this->pdo;
+        $req = $db->prepare("UPDATE posts SET posts.title = ?, posts.content = ? WHERE posts.id=?");
+        //var_dump($req);
+        $req->execute(array($title, $content, $id));
+        //var_dump($req);
         return $req;
     }
 

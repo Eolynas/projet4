@@ -19,8 +19,8 @@ class CommentsController extends AppController{
     }
     
     public function signal(){
-        var_dump($_GET['id']);
-        var_dump($_GET['post_id']);
+        //var_dump($_GET['id']);
+        //var_dump($_GET['post_id']);
         
         $comment = $this->comments->signal($_GET['id']);
         

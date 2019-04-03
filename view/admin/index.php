@@ -27,7 +27,7 @@
                 <td><?= $post['author']; ?></td>
                 <td><?= $post['date']; ?></td>
                 <td><?= $post['nbComments']; ?></td>
-                <td><a class="btn btn-secondary" href="index.php?p=admin.posts.update&id=<?= $post['id']; ?>" role="button">Modifier</a></td>
+                <td><a class="btn btn-secondary" href="index.php?p=admin.posts.postEdit&id=<?= $post['id']; ?>" role="button">Modifier</a></td>
                 <td><a class="btn btn-secondary" href="index.php?p=admin.posts.delete&id=<?= $post['id']; ?>" role="button">Supprimer</a></td>
             </tr>  
 

@@ -175,3 +175,14 @@ footer {
 .listCategories h3 {
     padding: 20px 0 20px 0;
 }
+
+/********************
+    ADMIN / COMMENTS
+********************/
+
+.commentSignal {
+    color: red;
+}
+.commentApproved {
+    color: green;
+}

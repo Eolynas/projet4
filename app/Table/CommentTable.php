@@ -48,11 +48,15 @@ class CommentTable extends Table {
 
     public function lastComments() {
         $db = $this->pdo;
-        $req = $db->query(""
-                . "SELECT "
-                . "* "
-                . "FROM $this->tb_comments "
-                . "ORDER BY $this->tb_comments.id_post DESC");
+        $req = $db->query("SET lc_time_names = 'fr_FR'");
+        $req = $db->query("SELECT 
+                                           comments.id, 
+                                           comments.id_post,
+                                           comments.content, 
+                                           comments.author, DATE_FORMAT(comments.date, 'le %d %M %Y à %T') AS date_comment, 
+                                           comments.signalComment 
+                                    FROM comments 
+                                    ORDER BY comments.id_post DESC ");
         //var_dump($req);
         $res = $req->fetchAll();
         //var_dump($res);
