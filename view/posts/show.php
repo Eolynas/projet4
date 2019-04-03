@@ -46,7 +46,18 @@
 
             <div class="comment">
                 <h4><?= $comment['author']; ?></h4>
-                <p class="container"><span class="col-6"><?= $comment['date_comment']; ?></span><a class="col-2 offset-4 btn btn-secondary" href="index.php?p=Comments.signal&id=<?= $comment['id'] ?>&post_id=<?= $post['id'] ?>" role="button">Signaler</a></p>
+                <?php
+                if ($comment['signalComment'] == 0){
+                    ?>
+                        <p class="container"><span class="col-6"><?= $comment['date_comment']; ?></span><a class="col-2 offset-4 btn btn-secondary" href="index.php?p=Comments.signal&id=<?= $comment['id'] ?>&post_id=<?= $post['id'] ?>" role="button">Signaler</a></p>
+                    <?php
+                } else {
+                    ?>
+                    <p class="container"><span class="col-6"><?= $comment['date_comment']; ?></span><span> Ce
+                            commentaire à était signalé </span></p>
+                    <?php
+                }
+                ?>
                 <p><?= $comment['content']; ?></p>
             </div>
 

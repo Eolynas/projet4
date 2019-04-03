@@ -88,10 +88,11 @@ class CommentTable extends Table {
     
     public function signal($id){
         $db = $this->pdo;
-        $req = $db->prepare(""
+        /*$req = $db->prepare(""
                 . "UPDATE $this->tb_comments "
                 . "SET comment_signal=1 "
-                . "WHERE $this->tb_comments.id = ?");
+                . "WHERE $this->tb_comments.id = ?");*/
+        $req = $db->prepare("UPDATE comments SET signalComment=1 WHERE comments.id = ?");
         //var_dump($req);
         $req->execute(array($id));
         //var_dump($req);

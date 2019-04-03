@@ -97,7 +97,7 @@ class PostTable extends Table
                             . "WHERE $this->tb_posts.id = ? "
                             . "ORDER BY date_comment DESC");*/
         $req = $db->query("SET lc_time_names = 'fr_FR'");
-        $req = $db->prepare("SELECT comments.id, comments.author, comments.content, comments.id_post, DATE_FORMAT(comments.date, 'le %d %M %Y à %T') AS date_comment
+        $req = $db->prepare("SELECT comments.id, comments.author, comments.content, comments.id_post, DATE_FORMAT(comments.date, 'le %d %M %Y à %T') AS date_comment, comments.signalComment
                                         FROM comments 
                                         LEFT JOIN posts ON comments.id_post = posts.id 
                                         WHERE posts.id = ?
