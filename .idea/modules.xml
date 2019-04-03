@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../SitePersoV2/.idea/SitePersoV2.iml" filepath="$PROJECT_DIR$/../SitePersoV2/.idea/SitePersoV2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Symfony/.idea/Symfony.iml" filepath="$PROJECT_DIR$/../Symfony/.idea/Symfony.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/projet4.iml" filepath="$PROJECT_DIR$/.idea/projet4.iml" />
     </modules>
   </component>

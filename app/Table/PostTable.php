@@ -20,37 +20,20 @@ class PostTable extends Table
     public function lastPosts()
     {
         $db = $this->pdo;
-
-        $req = $db->query('SELECT 
-                $this->tb_posts.id,
-                $this->tb_posts.title,
-                $this->tb_posts.id_author,
-                $this->tb_posts.content,
-                $this->tb_posts.id_category,
-                $this->tb_posts.id_img,
-                DATE_FORMAT(date, \'%d/%m/%Y \') AS date,
-                COUNT(CASE WHEN comments.id_post=posts.id THEN comments.id END ) AS nbComments
-                FROM $this->tb_posts 
-                LEFT JOIN $this->tb_images
-                    ON $this->tb_posts.id_img = $this->tb_images.id
-                LEFT JOIN $this->tb_users
-                    ON $this->tb_posts.id_author = $this->tb_users.id
-                LEFT JOIN $this->tb_categories
-                    ON $this->tb_posts.id_category = $this->tb_categories.id
-                LEFT JOIN $this->tb_comments
-                    ON $this->tb_comments.id_post = $this->tb_posts.id
-                GROUP BY $this->tb_posts.id
-                ORDER BY $this->tb_posts.date DESC
-                ');
-
-
-
-
-        /*$req = $db->query("SELECT * FROM $this->tb_posts");*/
+        $req = $db->query('  SELECT posts.id, posts.title, posts.id_author, posts.id_category, posts.id_img, posts.date AS date, posts.content,
+                                            COUNT(CASE WHEN comments.id_post=posts.id THEN comments.id END ) AS nbComments,
+                                            CONCAT(users.name, \' \', users.surname) AS author
+                                        FROM posts 
+                                        LEFT JOIN images ON posts.id_img = images.id
+                                        LEFT JOIN users ON posts.id_author = users.id
+                                        LEFT JOIN categories ON posts.id_category = categories.id
+                                        LEFT JOIN comments ON comments.id_post = posts.id
+                                        GROUP BY posts.id
+                                        ORDER BY posts.date DESC 
+                                        ');
         //var_dump($req);
-        var_dump($req);
         $res = $req->fetchAll();
-
+        //var_dump($res);
         return $res;
     }
 
@@ -87,19 +70,20 @@ class PostTable extends Table
     public function insertPost($title, $content, $category)
     {
         $db = $this->pdo;
-        $req = $db->prepare(""
+        /*$req = $db->prepare(""
                             . "INSERT INTO $this->tb_posts "
                             . "(title, content, id_category) "
-                            . "VALUES (?, ?, ?)");
+                            . "VALUES (?, ?, ?)");*/
+        $req = $db->prepare(" INSERT INTO posts (title, content, id_category) VALUE (?, ?, ?)");
         $req->execute(array($title, $content, $category));
-        //var_dump($req);
+        var_dump($req);
         return $req;
     }
 
     public function comment($postsId)
     {
         $db = $this->pdo;
-        $req = $db->prepare(""
+        /*$req = $db->prepare(""
                             . "SELECT "
                             . "$this->tb_comments.id, "
                             . "$this->tb_comments.author, "
@@ -111,7 +95,12 @@ class PostTable extends Table
                             . "LEFT JOIN $this->tb_posts "
                             . "ON $this->tb_comments.id_post = $this->tb_posts.id "
                             . "WHERE $this->tb_posts.id = ? "
-                            . "ORDER BY date_comment DESC");
+                            . "ORDER BY date_comment DESC");*/
+        $req = $db->prepare("SELECT comments.id, comments.author, comments.content, comments.id_post, DATE_FORMAT(comments.date, '%d/%m/%Y %T') AS date_comment
+                                        FROM comments 
+                                        LEFT JOIN posts ON comments.id_post = posts.id 
+                                        WHERE posts.id = ?");
+
         $req->execute(array($postsId));
         $comment = $req->fetchAll();
         return $comment;

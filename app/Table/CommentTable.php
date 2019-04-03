@@ -32,11 +32,16 @@ class CommentTable extends Table {
 
     public function insertComment($postId, $content, $author) {
         $db = $this->pdo;
-        $req = $db->prepare(""
+        /*$req = $db->prepare(""
                 . "INSERT INTO $this->tb_comments "
                 . "(id_post, content, author) "
-                . "VALUES (?, ?, ?)");
-        $req->execute(array($postId, $content, $author));
+                . "VALUES (?, ?, ?)");*/
+        $req = $db->prepare("INSERT INTO comments (id_post, content, author, date) VALUES (:id_post, :content, :author, NOW())");
+        //$req->execute(array($postId, $content, $author));
+        $req->bindValue('id_post', $postId, \PDO::PARAM_STR);
+        $req->bindValue('content', $content, \PDO::PARAM_STR);
+        $req->bindValue('author', $author, \PDO::PARAM_STR);
+        $req->execute();
         //var_dump($req);
         return $req;
     }

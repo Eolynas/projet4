@@ -1,8 +1,7 @@
-
 <?php
 foreach ($list as $post):
     //var_dump($post);
-    
+
     ?>
     <div class="posts">
         <h2><a href="index.php?p=posts.show&id=<?= $post['id']; ?>"><?= $post['title']; ?></a></h2>
@@ -10,10 +9,12 @@ foreach ($list as $post):
         <span>Publié le <?= $post['date']; ?> par <?= $post['author']; ?></span>
         <span>Il y a <?= $post['nbComments']; ?> commentaires</span>
 
-        <img src="<?= $post['url']; ?>" alt="<?= $post['alt']; ?>" class="img_post">
+        <!--<img src="<?/*= $post['url']; */?>" alt="<?/*= $post['alt']; */?>" class="img_post">-->
+        <img src="https://dummyimage.com/400x200/949494.jpg&text=1er+Article" class="img_post">
 
         <div class="posts_content"><?= substr($post['content'], 0, 250); ?> ...</div>
 
-        <a class="btn btn-secondary" href="index.php?p=posts.show&id=<?= $post['id']; ?>" role="button">Lire la suite</a>
-    </div>  
+        <a class="btn btn-secondary" href="index.php?p=posts.show&id=<?= $post['id']; ?>" role="button">Lire la
+            suite</a>
+    </div>
 <?php endforeach; ?>
