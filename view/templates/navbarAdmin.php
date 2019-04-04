@@ -14,9 +14,6 @@
                 <a class="nav-link" href="index.php?p=admin.categories.index">Catégorie</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="index.php?p=admin.images.index">Images</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="index.php?p=admin.comments.index">Commentaires</a>
             </li>
             <li class="nav-item">

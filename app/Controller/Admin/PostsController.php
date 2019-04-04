@@ -33,13 +33,20 @@ class PostsController extends AppController {
      * We recover the BDD the list of categories
      *
      */
-    /*public function addForm () {
+    public function addForm () {
         $category = $this->category->getListCategory();
 
         //var_dump($category);
         $list = $this->render($category, 'admin/addPost', 'admin');
-    }*/
+    }
 
+    /**
+     * Description: ajout du post
+     *
+     *
+     * Description: insert post
+     *
+     */
     public function addPost () {
         $list = $this->posts->insertPost($_POST['title'], $_POST['content'], $_POST['category']);
         //var_dump($list);

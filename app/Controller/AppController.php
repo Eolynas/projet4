@@ -18,6 +18,11 @@ class AppController extends Controller{
         $this->comments = new \App\Table\CommentTable(App::getInstance()->getDb());
     }
 
+    protected function loadUsers() {
+        //Instance de la class commentTable
+        $this->users = new \App\Table\UserTable(App::getInstance()->getDb());
+    }
+
 
     
     

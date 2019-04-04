@@ -27,6 +27,8 @@ class AppController extends Controller{
         //Instance de la class commentTable
         $this->comments = new \App\Table\CommentTable(App::getInstance()->getDb());
     }
+
+
     
     
 }
