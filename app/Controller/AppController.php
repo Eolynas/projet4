@@ -23,6 +23,11 @@ class AppController extends Controller{
         $this->users = new \App\Table\UserTable(App::getInstance()->getDb());
     }
 
+    protected function loadUpdate() {
+        //Instance de la class updateTable
+        $this->update = new \App\Table\UpdateTable(App::getInstance()->getDb());
+    }
+
 
     
     

@@ -1,4 +1,8 @@
 <?php
+
+include 'update.php';
+
+
 foreach ($list as $post):
     //var_dump($post);
 

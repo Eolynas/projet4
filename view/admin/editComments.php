@@ -1,6 +1,8 @@
 <h1>Modifier commentaire</h1>
 
 
+
+
 <h3>Pseudo : <?= $comment['author'] ?></h3>
 <span><?= $comment['date_comment'] ?></span>
 <form class="formEdit" method="post" action="index.php?p=admin.Comments.updateComment&id=<?= $comment['id'] ?>">

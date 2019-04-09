@@ -1,6 +1,13 @@
 <h1>BIENVENUE SUR LE DASHBOARD ADMIN</h1>
 <div class="messageComment">
-
+    <span><?php
+        //var_dump($comments);
+        //var_dump($message);
+        if(isset($message)){
+            echo $message;
+        }
+    ?>
+    </span>
 </div>
 <h3>Commentaire signalé</h3>
 
@@ -17,7 +24,7 @@
     </thead>
     <tbody>
         <?php
-        foreach ($list as $comment):
+        foreach ($comments as $comment):
             //var_dump($comment);
 
             if ($comment['signalComment'] == 1) {
@@ -59,7 +66,7 @@
     </thead>
     <tbody>
         <?php
-        foreach ($list as $comment):
+        foreach ($comments as $comment):
             //var_dump($comment);
             ?>
 
@@ -78,7 +85,7 @@
             ?>
                 </td>
                 <td><a class="btn btn-secondary" href="index.php?p=admin.Comments.edit&id=<?= $comment['id']; ?>" role="button">Modifier</a></td>
-                <td><a class="btn btn-secondary" href="index.php?p=admin.Comments.delete&id=<?= $comment['id']; ?>" role="button">Supprimer</a></td>
+                <td><a class="btn btn-secondary deleteComment" href="index.php?p=admin.Comments.delete&id=<?= $comment['id']; ?>" role="button">Supprimer</a></td>
 
             </tr>   
         <?php endforeach; ?>

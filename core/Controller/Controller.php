@@ -18,6 +18,15 @@ class Controller{
         require('view/templates/' . $template . '.php');
     }
 
+    protected function renderNotFound ($list, $view, $template){
+        ob_start();
+        $message = $list;
+
+        require('view/'. $view . '.php');
+        $content = ob_get_clean();
+        require('view/templates/' . $template . '.php');
+    }
+
    
 
 }

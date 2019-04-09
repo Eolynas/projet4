@@ -8,6 +8,9 @@
                 <a class="nav-link" href="index.php?p=admin.posts.index">Accueil <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="index.php?p=admin.update.index">Liste des amélioration </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="index.php?p=admin.posts.addForm">Ajouter un articles</a>
             </li>
             <li class="nav-item">

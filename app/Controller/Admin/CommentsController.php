@@ -21,14 +21,16 @@ class CommentsController extends AppController{
     public function index() {
         $comments = $this->comments->lastComments();
         //var_dump($comments);
-        $comments = $this->render($comments, 'admin/comments', 'admin');
+        $comments = $this->render(compact('comments'), 'admin/comments', 'admin');
     }
     
     public function delete () {
-        $post = $this->comments->delete($_GET['id']);
+        $delete = $this->comments->delete($_GET['id']);
         $comments = $this->comments->lastComments();
         //var_dump($comments);
-        $comments = $this->render($comments, 'admin/comments', 'admin');
+        $message = 'Le commenaire à était supprimer';
+        //$comments = $this->render($comments, 'admin/comments', 'admin');
+        $comments = $this->render(compact('comments', 'message'), 'admin/comments', 'admin');
     }
     
     public function edit (){

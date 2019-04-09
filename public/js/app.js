@@ -1,15 +1,13 @@
-$(document).ready(function(){
+/*$(document).ready(function(){
 
     $(".deleteComment").click(function(e){
         e.preventDefault();
-        $(".messageComment").html("<p>Le commentaire à était supprimé</p>");
+        var href = $('e').attr('href');
+        console.log(href);
 
 
 
     });
 
-});
+});*/
 
-function formContact(data, textStatus, xhr) {
-
-};

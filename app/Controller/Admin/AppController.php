@@ -28,6 +28,11 @@ class AppController extends Controller{
         $this->comments = new \App\Table\CommentTable(App::getInstance()->getDb());
     }
 
+    protected function loadUpdate() {
+        //Instance de la class updateTable
+        $this->update = new \App\Table\UpdateTable(App::getInstance()->getDb());
+    }
+
 
     
     
