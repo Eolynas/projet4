@@ -8,8 +8,10 @@
         foreach ($update as $post):
         //var_dump($post);
         ?>
-        <li> <?= $post['title']; ?>">  | Avancement <?= $post['progress']; ?>"%</li>
+        <li> <?= $post['title']; ?>">  | Avancement <?= $post['progress']; ?>"% </li>
 
         <?php endforeach; ?>
     </ul>
+    <p> Vous pouvez suivre le projet sur Git en <a href="https://github.com/Eolynas/projet4" target="_blank">cliquant
+     ici</a></p>
 </div>

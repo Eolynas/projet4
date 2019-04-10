@@ -8,12 +8,6 @@
                 <a class="nav-link" href="index.php">Accueil <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">menu 2</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">menu 3</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="index.php?p=admin.posts.index">admin</a>
             </li>
         </ul>

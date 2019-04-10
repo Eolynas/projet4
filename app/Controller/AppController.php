@@ -28,6 +28,11 @@ class AppController extends Controller{
         $this->update = new \App\Table\UpdateTable(App::getInstance()->getDb());
     }
 
+    protected function loadImages() {
+        //Instance de la class updateTable
+        $this->images = new \App\Table\ImagesTable(App::getInstance()->getDb());
+    }
+
 
     
     

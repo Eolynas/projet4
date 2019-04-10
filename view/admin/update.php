@@ -6,7 +6,6 @@
         <th scope="col">id</th>
         <th scope="col">Titre</th>
         <th scope="col">Contenu</th>
-        <th scope="col">Date prévu</th>
         <th scope="col">Avancement</th>
     </tr>
     </thead>
@@ -19,7 +18,6 @@
             <th scope="row"><?= $post['id']; ?></th>
             <td><?= $post['title']; ?></td>
             <td><?= $post['content']; ?></td>
-            <td><?= $post['dateUpdate']; ?></td>
             <td><?= $post['progress']; ?></td>
             <td><a class="btn btn-secondary" href="index.php?p=admin.update.edit&id=<?= $post['id']; ?>"
                    role="button">Modifier</a></td>

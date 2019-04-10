@@ -10,7 +10,7 @@ use Core\Database\MysqlDatabase;
  */
 class App {
 
-    public $title = "Projet 4";
+    public $title = "Billet simple pour l'Alaska par Jean Forteroche ";
     private $db_config;
     private static $_instance;
 

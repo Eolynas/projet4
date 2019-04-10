@@ -29,7 +29,7 @@ class UpdateController extends AppController
     }
 
     public function insertUpdate(){
-        $list = $this->update->insertUpdate($_POST['title'], $_POST['dateUpdate'], $_POST['content'], $_POST['progress']);
+        $list = $this->update->insertUpdate($_POST['title'], $_POST['content'], $_POST['progress']);
         $list = $this->update->lastUpdate();
         //var_dump($list);
         $list = $this->render(compact('list'), 'admin/update', 'admin');
@@ -42,8 +42,7 @@ class UpdateController extends AppController
 
     }
     public function update(){
-        $update = $this->update->editUpdate($_POST['title'], $_POST['content'], $_POST['dateUpdate'],
-                                            $_POST['progress'], $_GET['id']);
+        $update = $this->update->editUpdate($_POST['title'], $_POST['content'], $_POST['progress'], $_GET['id']);
         $list = $this->update->lastUpdate();
         //var_dump($list);
         $list = $this->render(compact('list'), 'admin/update', 'admin');

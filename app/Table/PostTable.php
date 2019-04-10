@@ -24,7 +24,7 @@ class PostTable extends Table
                                             COUNT(CASE WHEN comments.id_post=posts.id THEN comments.id END ) AS nbComments,
                                             CONCAT(users.name, \' \', users.surname) AS author
                                         FROM posts 
-                                        LEFT JOIN images ON posts.id_img = images.id
+                                        LEFT JOIN images ON posts.id_img = images.up_id
                                         LEFT JOIN users ON posts.id_author = users.id
                                         LEFT JOIN categories ON posts.id_category = categories.id
                                         LEFT JOIN comments ON comments.id_post = posts.id
@@ -53,12 +53,12 @@ class PostTable extends Table
                             . "DATE_FORMAT(date, '%d/%m/%Y ') AS date, "
                             . "$this->tb_posts.id_category, "
                             . "$this->tb_posts.id_img, "
-                            . "$this->tb_images.url,"
-                            . "$this->tb_images.alt,"
+                            //. "$this->tb_images.url,"
+                            //. "$this->tb_images.alt,"
                             . "CONCAT($this->tb_users.name, ' ', $this->tb_users.surname) AS author "
                             . "FROM $this->tb_posts "
-                            . "LEFT JOIN $this->tb_images "
-                            . "ON $this->tb_posts.id_img = $this->tb_images.id "
+                            //. "LEFT JOIN $this->tb_images "
+                            //. "ON $this->tb_posts.id_img = $this->tb_images.id "
                             . "LEFT JOIN $this->tb_users "
                             . "ON $this->tb_posts.id_author = $this->tb_users.id "
                             . "LEFT JOIN $this->tb_categories "

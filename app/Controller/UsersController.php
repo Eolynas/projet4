@@ -16,6 +16,7 @@ class UsersController extends AppController
         $this->loadUsers();
         $this->loadPosts();
         $this->loadComments();
+        $this->loadUpdate();
     }
 
     public function register(){
@@ -35,11 +36,12 @@ class UsersController extends AppController
         $user = $this->users->loginUser($_POST['login'], $_POST['password']);
         // On charge les données de la table Posts
         $list = $this->posts->lastPosts();
+        $update = $this->update->lastUpdate();
         //var_dump($list['id']);
         $nbComments = $this->comments->countComments(1);
         //var_dump($nbComments);
 
-        $user = $this->render(compact( 'users','list', 'nbComments'),'posts/posts', 'default');
+        $user = $this->render(compact( 'users','list', 'nbComments', 'update'),'posts/posts', 'default');
     }
 
     public function deconnexion() {

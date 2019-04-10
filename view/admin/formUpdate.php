@@ -7,10 +7,6 @@
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="1" name="title"></textarea>
     </div>
     <div class="form-group">
-        <label for="exampleFormControlTextarea1">Date prévu</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1" name="dateUpdate"></textarea>
-    </div>
-    <div class="form-group">
         <label for="exampleFormControlTextarea1">Avancement</label>
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="1" name="progress"></textarea>
     </div>

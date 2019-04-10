@@ -16,18 +16,18 @@ class UpdateTable extends Table
     public function lastUpdate ()
     {
         $db = $this->pdo;
-        $req = $db->query('SELECT * FROM updateBlog ORDER BY updateBlog.id' );
+        $req = $db->query('SELECT * FROM updateBlog ORDER BY updateBlog.progress DESC ' );
         //var_dump($req);
         $res = $req->fetchAll();
         //var_dump($res);
         return $res;
     }
 
-    public function insertUpdate($title, $content, $dateUpdate, $progress)
+    public function insertUpdate($title, $content, $progress)
     {
         $db = $this->pdo;
-        $req = $db->prepare('INSERT INTO updateBlog (updateBlog.title, updateBlog.content, updateBlog.dateUpdate, updateblog.progress) VALUE (?, ?, ?, ?)');
-        $req->execute(array($title, $content, $dateUpdate, $progress));
+        $req = $db->prepare('INSERT INTO updateBlog (updateBlog.title, updateBlog.content, updateblog.progress) VALUE (?, ?, ?)');
+        $req->execute(array($title, $content, $progress));
         //var_dump($req);
         return $req;
     }
@@ -41,11 +41,11 @@ class UpdateTable extends Table
         //var_dump($req);
         return $update;
     }
-    public function editUpdate($title, $content, $dateUpdate, $progress, $id)
+    public function editUpdate($title, $content, $progress, $id)
     {
         $db = $this->pdo;
-        $req = $db->prepare('UPDATE updateBlog SET title = ?, content = ?, dateUpdate = ?, progress = ? WHERE id = ?');
-        $req->execute(array($title, $content, $dateUpdate, $progress, $id));
+        $req = $db->prepare('UPDATE updateBlog SET title = ?, content = ?, progress = ? WHERE id = ?');
+        $req->execute(array($title, $content, $progress, $id));
         //var_dump($req);
         return $req;
     }

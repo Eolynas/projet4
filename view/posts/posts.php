@@ -14,7 +14,7 @@ foreach ($list as $post):
         <span>Il y a <?= $post['nbComments']; ?> commentaires</span>
 
         <!--<img src="<?/*= $post['url']; */?>" alt="<?/*= $post['alt']; */?>" class="img_post">-->
-        <img src="https://dummyimage.com/400x200/949494.jpg&text=1er+Article" class="img_post">
+        <img src="https://dummyimage.com/400x200/949494.jpg&text=Image" class="img_post">
 
         <div class="posts_content"><?= substr($post['content'], 0, 250); ?> ...</div>
 
