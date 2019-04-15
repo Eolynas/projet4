@@ -3,6 +3,8 @@
 namespace App\Table;
 
 
+use Doctrine\ORM\Query\Expr\From;
+
 /**
  * Description: requete SQL pour afficher tout les posts sur la page d'accueil
  *
@@ -21,10 +23,12 @@ class PostTable extends Table
     {
         $db = $this->pdo;
         $req = $db->query('  SELECT posts.id, posts.title, posts.id_author, posts.id_category, posts.id_img, posts.date AS date, posts.content,
-                                            COUNT(CASE WHEN comments.id_post=posts.id THEN comments.id END ) AS nbComments,
-                                            CONCAT(users.name, \' \', users.surname) AS author
+                                             images.up_title, images.up_name, images.up_date, images.up_alt, images.id,
+                                             COUNT(CASE WHEN comments.id_post=posts.id THEN comments.id END ) AS nbComments,
+                                             CONCAT(users.name, \' \', users.surname) AS author
+                                            
                                         FROM posts 
-                                        LEFT JOIN images ON posts.id_img = images.up_id
+                                        JOIN images ON images.id = posts.id_img
                                         LEFT JOIN users ON posts.id_author = users.id
                                         LEFT JOIN categories ON posts.id_category = categories.id
                                         LEFT JOIN comments ON comments.id_post = posts.id
@@ -44,41 +48,31 @@ class PostTable extends Table
     public function findPost($postsId)
     {
         $db = $this->pdo;
-        $req = $db->prepare(""
-                            . "SELECT "
-                            . "$this->tb_posts.id, "
-                            . "$this->tb_posts.title,"
-                            . "$this->tb_posts.id_author,"
-                            . "$this->tb_posts.content,"
-                            . "DATE_FORMAT(date, '%d/%m/%Y ') AS date, "
-                            . "$this->tb_posts.id_category, "
-                            . "$this->tb_posts.id_img, "
-                            //. "$this->tb_images.url,"
-                            //. "$this->tb_images.alt,"
-                            . "CONCAT($this->tb_users.name, ' ', $this->tb_users.surname) AS author "
-                            . "FROM $this->tb_posts "
-                            //. "LEFT JOIN $this->tb_images "
-                            //. "ON $this->tb_posts.id_img = $this->tb_images.id "
-                            . "LEFT JOIN $this->tb_users "
-                            . "ON $this->tb_posts.id_author = $this->tb_users.id "
-                            . "LEFT JOIN $this->tb_categories "
-                            . "ON $this->tb_posts.id_category = $this->tb_categories.id "
-                            . "WHERE $this->tb_posts.id = ?");
+        $req = $db->prepare ("SELECT posts.*,
+                                                images.*,
+                                                CONCAT(users.name, '', users.surname) AS author
+                                        FROM posts
+                                        JOIN images ON posts.id_img = images.id
+                                        LEFT JOIN users ON posts.id_author = users.id
+                                        LEFT JOIN categories ON posts.id_category = categories.id
+                                        WHERE posts.id");
+
         $req->execute(array($postsId));
         $post = $req->fetch();
         return $post;
     }
 
 
-    public function insertPost($title, $content, $category)
+    public function insertPost($title, $content, $category,$idImage)
     {
         $db = $this->pdo;
-        $titleSec = htmlspecialchars($title);
-        $contentSec = htmlspecialchars($content);
-        $caterogySec = htmlspecialchars($category);
-        $req = $db->prepare(" INSERT INTO posts (posts.title, posts.id_author, posts.content, posts.id_category, posts.date) VALUE (?, 1, ?, ?, NOW())");
-        $req->execute(array($titleSec, $contentSec, $caterogySec));
+        $titleSec = $title;
+        $contentSec = $content;
+        $caterogySec = $category;
+        $req = $db->prepare(" INSERT INTO posts (posts.title, posts.id_author, posts.content, posts.id_category, posts.date, posts.id_img) VALUE (?, 1, ?, ?, ?, NOW())");
+        $req->execute(array($titleSec, $contentSec, $caterogySec, $idImage));
         //var_dump($req);
+        $db = $this->pdo;
         return $req;
     }
 

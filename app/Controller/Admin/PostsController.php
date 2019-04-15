@@ -13,7 +13,7 @@ class PostsController extends AppController {
     public function __construct(){
         $this->loadPosts();
         $this->loadCategory();
-        
+        $this->loadImages();
 
     }
     
@@ -48,8 +48,14 @@ class PostsController extends AppController {
      *
      */
     public function addPost () {
+        var_dump($_FILES);
+        $moveImage = move_uploaded_file($_FILES['image']['tmp_name'], 'public/img/' .$_FILES['image']['name']);
+        $image = $this->images->insertImage($_FILES['image']['name'], $_FILES['image']['name'], $_FILES['image']['name']);
+        var_dump($image);
+
         $list = $this->posts->insertPost($_POST['title'], $_POST['content'], $_POST['category']);
         //var_dump($list);
+
         $list = $this->posts->lastPosts();
         $list = $this->render(compact('list'), 'admin/index', 'admin');
     }

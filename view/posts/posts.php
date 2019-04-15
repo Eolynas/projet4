@@ -13,8 +13,8 @@ foreach ($list as $post):
         <span>Publié le <?= $post['date']; ?> par <?= $post['author']; ?></span>
         <span>Il y a <?= $post['nbComments']; ?> commentaires</span>
 
-        <!--<img src="<?/*= $post['url']; */?>" alt="<?/*= $post['alt']; */?>" class="img_post">-->
-        <img src="https://dummyimage.com/400x200/949494.jpg&text=Image" class="img_post">
+        <img src="public/img/<?= $post['up_name']; ?>" alt="<?= $post['up_alt']; ?>" class="img_post">
+        <!--<img src="https://dummyimage.com/400x200/949494.jpg&text=Image" class="img_post">-->
 
         <div class="posts_content"><?= substr($post['content'], 0, 250); ?> ...</div>
 

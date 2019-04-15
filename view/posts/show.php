@@ -1,12 +1,14 @@
 
-<?php ?>
+<?php
+//var_dump($post);
+?>
 <div class="post">
     <h2><a><?= $post['title']; ?></a></h2>
 
     <span>Publié le <?= $post['date']; ?> par <?= $post['author']; ?> </span>
     <?php
     foreach ($nbComments as $nbComment):
-        //var_dump($nbComment['nbComments']); 
+        //var_dump($nbComment['nbComments']);
 
         if ($nbComment['nbComments'] == 1) {
             echo 'Il y a ' . $nbComment['nbComments'] . ' commentaire';
@@ -24,9 +26,9 @@
 
 
     <?php 
-    if ($post['url'] != null){
+    if ($post['up_name'] != null){
         ?>
-        <img src="<?= $post['url']; ?>" alt="<?= $post['alt']; ?>" class="img_post">
+        <img src="public/img/<?= $post['up_name']; ?>" alt="<?= $post['up_alt']; ?>">
         
     <?php
     }

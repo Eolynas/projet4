@@ -44,5 +44,12 @@ class ImagesController extends AppController{
         $images = $this->images->lastImages();
         $images = $this->render(compact('images'), 'admin/images', 'admin');
     }
+
+    public function delete () {
+        $delete = $this->images->delete($_GET['id']);
+        //var_dump($delete);
+        $images = $this->images->lastImages();
+        $images  = $this->render(compact('images'), 'admin/images', 'admin');
+    }
 }
 

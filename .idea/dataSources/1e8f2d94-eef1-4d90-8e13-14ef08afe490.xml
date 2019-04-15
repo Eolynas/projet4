@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="projet4@localhost">
-  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.14">
+  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.15">
     <root id="1">
       <ServerVersion>5.7.24</ServerVersion>
       <DefaultEngine>MyISAM</DefaultEngine>
@@ -984,7 +984,7 @@
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="247" parent="233" name="up_id">
+    <column id="247" parent="233" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
@@ -1015,7 +1015,7 @@
     </column>
     <key id="252" parent="233" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>up_id</ColNames>
+      <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
     <column id="253" parent="234" name="id">
