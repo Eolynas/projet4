@@ -39,7 +39,7 @@
                     </div>
                     <h4><?= $message ?></h4>
                     <p></p>
-                    <a href="" class="btn btn-primary btn-round">Retour à la page principal</a>
+                    <a href="index.php" class="btn btn-primary btn-round">Retour à la page principal</a>
                 </div>
             </div>
         </div>

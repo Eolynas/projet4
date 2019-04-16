@@ -48,17 +48,18 @@ class PostsController extends AppController {
      *
      */
     public function addPost () {
-        var_dump($_FILES);
-        $moveImage = move_uploaded_file($_FILES['image']['tmp_name'], 'public/img/' .$_FILES['image']['name']);
-        $image = $this->images->insertImage($_FILES['image']['name'], $_FILES['image']['name'], $_FILES['image']['name']);
-        var_dump($image);
+    //var_dump($_FILES);
+    $moveImage = move_uploaded_file($_FILES['image']['tmp_name'], 'public/img/' .$_FILES['image']['name']);
+    $image = $this->images->insertImage($_FILES['image']['name'], $_FILES['image']['name'], $_FILES['image']['name']);
+    var_dump($image);
 
-        $list = $this->posts->insertPost($_POST['title'], $_POST['content'], $_POST['category']);
-        //var_dump($list);
+    $list = $this->posts->insertPost($_POST['title'], $_POST['content'], $_POST['category'], $image);
+    var_dump($list);
 
-        $list = $this->posts->lastPosts();
-        $list = $this->render(compact('list'), 'admin/index', 'admin');
-    }
+    $list = $this->posts->lastPosts();
+    $list = $this->render(compact('list'), 'admin/index', 'admin');
+}
+
 
     /**
      * Description: Appel le formulaire d'ajout d'un article

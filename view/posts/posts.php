@@ -8,7 +8,7 @@ foreach ($list as $post):
 
     ?>
     <div class="posts">
-        <h2><a href="index.php?p=posts.show&id=<?= $post['id']; ?>"><?= $post['title']; ?></a></h2>
+        <h2><a href="index.php?p=posts.show&id=<?= $post['idPost']; ?>"><?= $post['title']; ?></a></h2>
 
         <span>Publié le <?= $post['date']; ?> par <?= $post['author']; ?></span>
         <span>Il y a <?= $post['nbComments']; ?> commentaires</span>
@@ -18,7 +18,7 @@ foreach ($list as $post):
 
         <div class="posts_content"><?= substr($post['content'], 0, 250); ?> ...</div>
 
-        <a class="btn btn-secondary" href="index.php?p=posts.show&id=<?= $post['id']; ?>" role="button">Lire la
+        <a class="btn btn-secondary" href="index.php?p=posts.show&id=<?= $post['idPost']; ?>" role="button">Lire la
             suite</a>
     </div>
 <?php endforeach; ?>

@@ -46,12 +46,26 @@ class PostsController extends AppController
      */
     public function show()
     {
-        $post = $this->posts->findPost($_GET['id']);
-        $comments = $this->posts->comment($_GET['id']);
-        $nbComments = $this->comments->countComments($_GET['id']);
-        //$post = compact('post');
-        //var_dump($post);
-        $post = $this->render(compact('post', 'comments', 'nbComments'), 'posts/show', 'show');
+        $id = (int) $_GET['id'];
+        if($id >0 ){
+            //var_dump($_GET['id']);
+            $post = $this->posts->findPost($_GET['id']);
+            $comments = $this->posts->comment($_GET['id']);
+            $nbComments = $this->comments->countComments($_GET['id']);
+            //$post = compact('post');
+            //var_dump($post);
+            if($post == false){
+                $message = "L'articles n'a pas pu etre trouver";
+                //$notFound = $this->render(compact($message),'posts/404', 'default');
+                $notFound = $this->renderNotFound($message, 'posts/404', '404');
+            } else {
+                $post = $this->render(compact('post', 'comments', 'nbComments'), 'posts/show', 'show');
+            }
+        } else {
+            $message = "L'articles n'ont pas pu etre affiché";
+            //$notFound = $this->render(compact($message),'posts/404', 'default');
+            $notFound = $this->renderNotFound($message, 'posts/404', '404');
+        }
 
     }
 

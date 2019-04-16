@@ -32,8 +32,10 @@ class ImagesTable extends Table
         $req->bindValue('up_alt', $alt, \PDO::PARAM_STR);
         $req->bindValue('up_title', $title, \PDO::PARAM_STR);
         $req->execute();
-        var_dump($req);
-        return $req;
+        //var_dump($req);
+        //var_dump($this->pdo->lastInsertId());
+        return $this->pdo->lastinsertid();
+        //return $req;
     }
 
     public function editImages()

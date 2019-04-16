@@ -22,7 +22,7 @@ class PostTable extends Table
     public function lastPosts()
     {
         $db = $this->pdo;
-        $req = $db->query('  SELECT posts.id, posts.title, posts.id_author, posts.id_category, posts.id_img, posts.date AS date, posts.content,
+        $req = $db->query('  SELECT posts.id AS idPost, posts.title, posts.id_author, posts.id_category, posts.id_img, posts.date AS date, posts.content,
                                              images.up_title, images.up_name, images.up_date, images.up_alt, images.id,
                                              COUNT(CASE WHEN comments.id_post=posts.id THEN comments.id END ) AS nbComments,
                                              CONCAT(users.name, \' \', users.surname) AS author
@@ -48,31 +48,44 @@ class PostTable extends Table
     public function findPost($postsId)
     {
         $db = $this->pdo;
-        $req = $db->prepare ("SELECT posts.*,
-                                                images.*,
-                                                CONCAT(users.name, '', users.surname) AS author
-                                        FROM posts
-                                        JOIN images ON posts.id_img = images.id
-                                        LEFT JOIN users ON posts.id_author = users.id
-                                        LEFT JOIN categories ON posts.id_category = categories.id
-                                        WHERE posts.id");
-
-        $req->execute(array($postsId));
-        $post = $req->fetch();
-        return $post;
+        $titleSec = $postsId;
+        //var_dump($titleSec);
+        if($titleSec > 0){
+            $req = $db->prepare ("SELECT posts.*, images.*, CONCAT(users.name, '', users.surname) AS author
+                                            FROM posts
+                                            JOIN images ON posts.id_img = images.id
+                                            LEFT JOIN users ON posts.id_author = users.id
+                                            LEFT JOIN categories ON posts.id_category = categories.id
+                                            WHERE posts.id = :id");
+            $req->bindValue('id', $titleSec);
+            //var_dump($req);
+            $req->execute();
+            $post = $req->fetch();
+            return $post;
+        } else {
+            //var_dump('erreur');
+            return 'error';
+        }
     }
 
 
-    public function insertPost($title, $content, $category,$idImage)
+    public function insertPost($title, $content, $category, $image)
     {
         $db = $this->pdo;
         $titleSec = $title;
         $contentSec = $content;
-        $caterogySec = $category;
-        $req = $db->prepare(" INSERT INTO posts (posts.title, posts.id_author, posts.content, posts.id_category, posts.date, posts.id_img) VALUE (?, 1, ?, ?, ?, NOW())");
-        $req->execute(array($titleSec, $contentSec, $caterogySec, $idImage));
-        //var_dump($req);
-        $db = $this->pdo;
+        $caterogySec = (int) $category;
+        $imageSec = (int) $image;
+        //$idImageSec = 1;
+        $req = $db->prepare(" INSERT INTO posts (posts.title, posts.id_author, posts.content, posts.id_category, posts.date, posts.id_img) 
+                                            VALUE (:title, :author, :content, :category, NOW(), :img)");
+        $req->bindValue('title', $titleSec);
+        $req->bindValue('author', 1);
+        $req->bindValue('content', $contentSec);
+        $req->bindValue('category', $caterogySec);
+        $req->bindValue('img', $imageSec);
+        $req->execute();
+        var_dump($req);
         return $req;
     }
 
