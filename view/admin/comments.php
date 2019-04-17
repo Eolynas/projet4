@@ -25,7 +25,7 @@
     <tbody>
         <?php
         foreach ($comments as $comment):
-            var_dump($comment);
+            //var_dump($comment);
 
             if ($comment['signalComment'] == 1) {
                 ?>    
@@ -80,7 +80,7 @@
         if ($comment['signalComment'] == '1') {
             echo'<span class="commentSignal">Le commentaire à était signalé</span>';
         } else {
-            echo'<span class="commentApproved">Le commentaire à était approuvé</span>';
+            echo'<span class="commentApproved">Le commentaire n\'a pas était signalé</span>';
         }
             ?>
                 </td>

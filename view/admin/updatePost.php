@@ -1,9 +1,9 @@
 <h1>Modifier un articles</h1>
 <?php
-var_dump($list);
+//var_dump($list);
+
 ?>
-?>
-<form class="formEdit" method="post" action="index.php?p=admin.posts.updatePost&id=<?= $list['id'] ?>">
+<form class="formEdit" method="post" action="index.php?p=admin.posts.updatePost&id=<?= $list['idPost'] ?>">
     <div class="form-group">
         <label for="titleForm">titre de l'article</label>
         <input type="text" class="form-control" id="titleForm" name="title" value="<?= $list['title'] ?>">

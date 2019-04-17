@@ -48,16 +48,18 @@ class PostTable extends Table
     public function findPost($postsId)
     {
         $db = $this->pdo;
-        $titleSec = $postsId;
+        $postSec = $postsId;
         //var_dump($titleSec);
-        if($titleSec > 0){
-            $req = $db->prepare ("SELECT posts.*, images.*, CONCAT(users.name, '', users.surname) AS author
+        if($postSec > 0){
+            $req = $db->prepare ("SELECT posts.id AS idPost, posts.id_img, posts.id_category, posts.id_author, posts.content, posts.date, posts.title,
+                                                images.*, 
+                                                CONCAT(users.name, '', users.surname) AS author
                                             FROM posts
                                             JOIN images ON posts.id_img = images.id
                                             LEFT JOIN users ON posts.id_author = users.id
                                             LEFT JOIN categories ON posts.id_category = categories.id
                                             WHERE posts.id = :id");
-            $req->bindValue('id', $titleSec);
+            $req->bindValue('id', $postSec);
             //var_dump($req);
             $req->execute();
             $post = $req->fetch();
@@ -92,11 +94,12 @@ class PostTable extends Table
     public function updatePost($id, $title, $content)
     {
         $db = $this->pdo;
+        $titleSec = $title;
+        $contentSec = $content;
+        $idSec = (int) $id;
         $req = $db->prepare("UPDATE posts SET posts.title = ?, posts.content = ? WHERE posts.id=?");
         //var_dump($req);
-        $titleSec = htmlspecialchars($title);
-        $contentSec = htmlspecialchars($content);
-        $req->execute(array($titleSec, $contentSec, $id));
+        $req->execute(array($titleSec, $contentSec, $idSec));
         //var_dump($req);
         return $req;
     }

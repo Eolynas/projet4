@@ -32,8 +32,8 @@ class CommentTable extends Table {
 
     public function insertComment($postId, $content, $author) {
         $db = $this->pdo;
-        $contentSec = htmlspecialchars($content);
-        $authorSec = htmlspecialchars($author);
+        $contentSec = $content;
+        $authorSec = $author;
         $req = $db->prepare("INSERT INTO comments (id_post, content, author, date) VALUES (:id_post, :content, :author, NOW())");
         //$req->execute(array($postId, $content, $author));
         $req->bindValue('id_post', $postId, \PDO::PARAM_STR);
@@ -77,13 +77,22 @@ class CommentTable extends Table {
     
     public function updateComment($content, $id){
         $db = $this->pdo;
+        $contentSec = $content;
+        $idSec = (int) $id;
+        $signalSec = 0; // Signifie que le commentaire n'est pas signalé
         $req = $db->prepare(""
                 . "UPDATE $this->tb_comments "
                 . "SET content= ?, "
                 . "comment_signal=0 "
                 . "WHERE $this->tb_comments.id = ?");
+        $req = $db->prepare("UPDATE comments 
+                                        SET content = :content, signalComment = :signal
+                                        WHERE comments.id = :id");
         //var_dump($req);
-        $req->execute(array($content, $id));
+        $req->bindValue('content', $contentSec, \PDO::PARAM_STR);
+        $req->bindValue('id', $idSec, \PDO::PARAM_STR);
+        $req->bindValue('signal', $signalSec, \PDO::PARAM_STR);
+        $req->execute();
         //var_dump($req);
         return $req;
     }

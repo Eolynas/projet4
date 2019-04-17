@@ -47,7 +47,7 @@ class CommentsController extends AppController{
         //var_dump($comments);
         $comments = $this->comments->lastComments();
         //var_dump($comments);
-        $comments = $this->render($comments, 'admin/comments', 'admin');
+        $comments = $this->render(compact('comments'), 'admin/comments', 'admin');
     }
     
 }

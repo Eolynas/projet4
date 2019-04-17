@@ -20,15 +20,15 @@
             //var_dump($post);
             ?>
             <tr>
-                <th scope="row"><?= $post['id']; ?></th>
+                <th scope="row"><?= $post['idPost']; ?></th>
                 <td><?= $post['title']; ?></td>
                 <td><?= substr($post['content'], 0, 100); ?></td>
                 <td><?= $post['id_category']; ?></td>
                 <td><?= $post['author']; ?></td>
                 <td><?= $post['date']; ?></td>
                 <td><?= $post['nbComments']; ?></td>
-                <td><a class="btn btn-secondary" href="index.php?p=admin.posts.postEdit&id=<?= $post['id']; ?>" role="button">Modifier</a></td>
-                <td><a class="btn btn-secondary" href="index.php?p=admin.posts.delete&id=<?= $post['id']; ?>" role="button">Supprimer</a></td>
+                <td><a class="btn btn-secondary" href="index.php?p=admin.posts.postEdit&id=<?= $post['idPost']; ?>" role="button">Modifier</a></td>
+                <td><a class="btn btn-secondary" href="index.php?p=admin.posts.delete&id=<?= $post['idPost']; ?>" role="button">Supprimer</a></td>
             </tr>  
 
 

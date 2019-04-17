@@ -1,6 +1,7 @@
 
 <?php
 //var_dump($post);
+//var_dump(array_map('htmlspecialchars', $post));
 ?>
 <div class="post">
     <h2><a><?= $post['title']; ?></a></h2>
@@ -43,29 +44,36 @@
     <div>
         <?php
         foreach ($comments as $comment):
+            //var_dump(array_map('htmlspecialchars', $comment));
+            $commentSec = array_map('htmlspecialchars', $comment);
             //var_dump($comment);
             ?>
 
             <div class="comment">
                 <h4><?= $comment['author']; ?></h4>
                 <?php
-                if ($comment['signalComment'] == 0){
+                if ($commentSec['signalComment'] == 0){
                     ?>
-                        <p class="container"><span class="col-6"><?= $comment['date_comment']; ?></span><a class="col-2 offset-4 btn btn-secondary" href="index.php?p=Comments.signal&id=<?= $comment['id'] ?>&post_id=<?= $post['id'] ?>" role="button">Signaler</a></p>
+                        <p class="container"><span class="col-6"><?= $commentSec['date_comment']; ?></span>
+                            <a class="col-2 offset-4 btn btn-secondary"
+                               href="index.php?p=Comments.signal&id=<?= $comment['id'] ?>&post_id=<?= $post['idPost'] ?>"
+                               role="button">Signaler
+                            </a>
+                        </p>
                     <?php
                 } else {
                     ?>
-                    <p class="container"><span class="col-6"><?= $comment['date_comment']; ?></span><span> Ce
+                    <p class="container"><span class="col-6"><?= $commentSec['date_comment']; ?></span><span> Ce
                             commentaire à était signalé </span></p>
                     <?php
                 }
                 ?>
-                <p><?= $comment['content']; ?></p>
+                <p><?= $commentSec['content']; ?></p>
             </div>
 
         <?php endforeach; ?>
     </div>
-    <form class="form_comment" method="post" action="index.php?p=posts.addComments&id=<?= $post['id']; ?>">
+    <form class="form_comment" method="post" action="index.php?p=posts.addComments&id=<?= $post['idPost']; ?>">
         <div class="form-group">
             <label for="formName">Pseudo</label>
             <input type="text" class="form-control" id="formName" placeholder="pseudo" name="author" required>
