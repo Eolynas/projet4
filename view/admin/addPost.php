@@ -1,11 +1,11 @@
-<h1>Ajouter un articles</h1>
+<h1>Ajouter un article</h1>
 
 <form class="formEdit" method="post" action="index.php?p=admin.posts.addPost" enctype="multipart/form-data">
     <div class="form-group">
         <label for="titleForm">titre</label>
         <input type="text" class="form-control" id="titleForm" name="title">
-        <label for="authorForm">Auteur</label>
-        <input type="text" class="form-control" id="authorForm" name="author">
+        <!--<label for="authorForm">Auteur</label>
+        <input type="text" class="form-control" id="authorForm" name="author">-->
     </div>
     <div class="form-group">
         <label for="chapterForm">Chapitre</label>

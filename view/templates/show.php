@@ -28,21 +28,7 @@
                     <?= $content; ?>
                 </div>
 
-                <div class="col-12 col-xl-4 sidebar">
-                    <div class="widget widget_newletter">
-                        <h3 class="widget_title">Inscription à la newletter</h3>
-                    </div>
-                    <div class="widget widget_aboutme">
-                        <h3 class="widget_title">A propos de moi</h3>
-                    </div>
-                    <div class="widget widget_reseaux">
-                        <h3 class="widget_title">Social</h3>
-                    </div>
-                    <div class="widget widget_categories">
-                        <h3 class="widget_title">Catégories</h3>
-                    </div>
-
-                </div>
+                <?php include 'widget.php'; ?>
             </div>
         </section> 
         <footer>

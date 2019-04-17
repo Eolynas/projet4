@@ -1,4 +1,3 @@
-<h1>BIENVENUE SUR LE DASHBOARD ADMIN</h1>
 <div class="messageComment">
     <span><?php
         //var_dump($comments);

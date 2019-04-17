@@ -7,9 +7,6 @@
             <li class="nav-item active">
                 <a class="nav-link" href="index.php">Accueil <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="index.php?p=admin.posts.index">admin</a>
-            </li>
         </ul>
         <ul class="navbar-nav">
         <?php
@@ -17,14 +14,10 @@
             ?>
             <ul class="navbar-nav">
                 <li class="navbar-brand">
-                    <a>Bienvenue <?php echo $_SESSION['login'] ?> vous ete
-                        <?php if ($_SESSION['power'] == 1){
-                        echo 'utilisateur';
-                        } elseif ($_SESSION['power'] == 9){
-                        echo 'admin';
-                        }
-                        ?>
-                        </a>
+                    <a>Bonjour <?php echo $_SESSION['login'] . ' niv' . $_SESSION['power'] ?></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php?p=admin.posts.index">admin</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="index.php?p=users.deconnexion">Déconnexion</a>

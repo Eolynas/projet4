@@ -1,6 +1,3 @@
-<h1>BIENVENUE SUR LE DASHBOARD ADMIN</h1>
-
-
 <div class="listCategories">
     <h3>Liste des articles</h3>
     <table class="table table-striped">

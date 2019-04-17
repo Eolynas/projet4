@@ -20,16 +20,11 @@
         }
         ?>
 
-
-
     <?php endforeach; ?>
-
-
-
-    <?php 
+    <?php
     if ($post['up_name'] != null){
         ?>
-        <img src="public/img/<?= $post['up_name']; ?>" alt="<?= $post['up_alt']; ?>">
+        <img class="img_post" src="public/img/<?= $post['up_name']; ?>" alt="<?= $post['up_alt']; ?>">
         
     <?php
     }
@@ -64,7 +59,7 @@
                 } else {
                     ?>
                     <p class="container"><span class="col-6"><?= $commentSec['date_comment']; ?></span><span> Ce
-                            commentaire à était signalé </span></p>
+                            commentaire a été signalé </span></p>
                     <?php
                 }
                 ?>

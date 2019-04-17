@@ -6,6 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="Eddy Hubert">
+
+        <meta name="robots" content="noindex">
+        
         <link rel="icon" href="../../favicon.ico">
 
         <title><?= App::getInstance()->title; ?></title>
@@ -56,21 +59,8 @@
                     <?= $content; ?>
                 </div>
 
-                <div class="col-12 col-xl-4 sidebar">
-                    <div class="widget widget_newletter">
-                        <h3 class="widget_title">Inscription à la newletter</h3>
-                    </div>
-                    <div class="widget widget_aboutme">
-                        <h3 class="widget_title">A propos de moi</h3>
-                    </div>
-                    <div class="widget widget_reseaux">
-                        <h3 class="widget_title">Social</h3>
-                    </div>
-                    <div class="widget widget_categories">
-                        <h3 class="widget_title">Catégories</h3>
-                    </div>
+                <?php include 'widget.php'; ?>
 
-                </div>
             </div>
         </section> 
         <footer>
