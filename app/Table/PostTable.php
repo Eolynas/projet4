@@ -25,7 +25,7 @@ class PostTable extends Table
         $req = $db->query('  SELECT posts.id AS idPost, posts.title, posts.id_author, posts.id_category, posts.id_img, posts.date AS date, posts.content,
                                              images.up_title, images.up_name, images.up_date, images.up_alt, images.id,
                                              COUNT(CASE WHEN comments.id_post=posts.id THEN comments.id END ) AS nbComments,
-                                             CONCAT(users.name, \' \', users.surname) AS author
+                                             CONCAT(users.name, \'  \', users.surname) AS author
                                             
                                         FROM posts 
                                         JOIN images ON images.id = posts.id_img
@@ -53,7 +53,7 @@ class PostTable extends Table
         if($postSec > 0){
             $req = $db->prepare ("SELECT posts.id AS idPost, posts.id_img, posts.id_category, posts.id_author, posts.content, posts.date, posts.title,
                                                 images.*, 
-                                                CONCAT(users.name, '', users.surname) AS author
+                                                CONCAT(users.name, ' ', users.surname) AS author
                                             FROM posts
                                             JOIN images ON posts.id_img = images.id
                                             LEFT JOIN users ON posts.id_author = users.id

@@ -1,3 +1,5 @@
+<?php $nav_en_cours = 'update'; ?>
+
 <h1>Les des amélioration à venir sur le site</h1>
 
 <table class="table table-striped">

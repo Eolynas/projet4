@@ -1,3 +1,5 @@
+<?php $nav_en_cours = 'index'; ?>
+
 <h1>BIENVENUE SUR LE DASHBOARD ADMIN</h1>
 
 
@@ -22,7 +24,8 @@
             <tr>
                 <th scope="row"><?= $post['idPost']; ?></th>
                 <td><?= $post['title']; ?></td>
-                <td><?= substr($post['content'], 0, 100); ?></td>
+               <!-- <td><?/*= substr($post['content'], 0, 100); */?></td>-->
+                <td><?= $post['content']; ?></td>
                 <td><?= $post['id_category']; ?></td>
                 <td><?= $post['author']; ?></td>
                 <td><?= $post['date']; ?></td>

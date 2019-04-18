@@ -1,3 +1,5 @@
+<?php $nav_en_cours = 'categories'; ?>
+
 <div class="listCategories">
     <h3>Liste des articles</h3>
     <table class="table table-striped">

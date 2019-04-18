@@ -27,9 +27,11 @@ class PostsController extends AppController
         // On charge les données de la table Posts
         $list = $this->posts->lastPosts();
         $update = $this->update->lastUpdate();
+        //var_dump($update);
         $nbComments = $this->comments->countComments(1);
         //var_dump($update);
         if ($list !== null) {
+            //var_dump($list);
             $list = $this->render(compact('list', 'nbComments', 'update'), 'posts/posts', 'default');
         } else {
             $message = "Les articles n'ont pas pu etre affiché";

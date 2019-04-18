@@ -1,3 +1,5 @@
+<?php $nav_en_cours = 'comments'; ?>
+
 <div class="messageComment">
     <span><?php
         //var_dump($comments);

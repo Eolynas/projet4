@@ -1,10 +1,12 @@
+<?php $nav_en_cours = 'images'; ?>
+
 <h1> Listes des images </h1>
 
 <a class="btn btn-secondary" href="index.php?p=admin.images.formImage" role="button">Ajouter
     une image</a>
 
 <?php
-    if (empty($message)){
+    if (!empty($message)){
         ?>
         <p>Votre message à était supprimer</p>
         <?php

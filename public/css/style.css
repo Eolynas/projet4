@@ -18,6 +18,10 @@ body {
     background-color: #fbfbfb !important;
     font-family: "UbuntuMono",  Arial, Helvetica, Verdana, sans-serif;
 }
+
+a:hover {
+    text-decoration: none;
+}
 /********************
         ALERT
 ********************/

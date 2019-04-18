@@ -8,8 +8,8 @@
         <meta name="author" content="Eddy Hubert">
 
         <meta name="robots" content="noindex">
-        
-        <link rel="icon" href="../../favicon.ico">
+
+        <link rel="icon" href="public/img/icon/ico.png">
 
         <title><?= App::getInstance()->title; ?></title>
 

@@ -16,7 +16,7 @@ class UpdateTable extends Table
     public function lastUpdate ()
     {
         $db = $this->pdo;
-        $req = $db->query('SELECT * FROM updateBlog ORDER BY updateBlog.progress DESC ' );
+        $req = $db->query('SELECT updateblog.* FROM updateblog ORDER BY updateblog.progress DESC ' );
         //var_dump($req);
         $res = $req->fetchAll();
         //var_dump($res);
