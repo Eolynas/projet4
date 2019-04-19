@@ -20,6 +20,14 @@ class CategoryTable extends Table{
         $res = $req->fetchAll();
         return $res;
     }
+
+    public function insertCat($name){
+        $db = $this->pdo;
+        $req = $db->prepare("INSERT INTO categories (name) VALUE (:name)");
+        $req->bindValue('name', $name);
+        $res = $req->execute();
+        return $res;
+    }
     
     
 }

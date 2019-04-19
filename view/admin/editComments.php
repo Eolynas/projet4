@@ -1,7 +1,9 @@
+<?php $nav_en_cours = 'comments'; ?>
+
 <h1>Modifier commentaire</h1>
 
 <?php
-var_dump($comment);
+//var_dump($comment);
 ?>
 
 

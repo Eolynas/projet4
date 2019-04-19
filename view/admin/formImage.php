@@ -1,3 +1,5 @@
+<?php $nav_en_cours = 'images'; ?>
+
 <h1>Ajouter une image</h1>
 
 

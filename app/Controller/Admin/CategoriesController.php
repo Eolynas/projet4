@@ -21,4 +21,12 @@ class CategoriesController extends AppController {
         $list = $this->render($category, 'admin/categories', 'admin');
     }
 
+    public function insertCategory() {
+        var_dump($_POST);
+        $category = $this->category->insertCat($_POST['title']);
+
+        $category = $this->category->getListCategory();
+        $list = $this->render($category, 'admin/categories', 'admin');
+    }
+
 }

@@ -48,9 +48,10 @@ class PostsController extends AppController {
      *
      */
     public function addPost () {
-    //var_dump($_FILES);
+    var_dump($_FILES);
+    var_dump($_POST);
     $moveImage = move_uploaded_file($_FILES['image']['tmp_name'], 'public/img/' .$_FILES['image']['name']);
-    $image = $this->images->insertImage($_FILES['image']['name'], $_FILES['image']['name'], $_FILES['image']['name']);
+    $image = $this->images->insertImage($_FILES['image']['name'], $_POST['alt'], $_POST['titleImg']);
     //var_dump($image);
 
     $list = $this->posts->insertPost($_POST['title'], $_POST['content'], $_POST['category'], $image);

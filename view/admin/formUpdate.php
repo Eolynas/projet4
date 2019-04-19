@@ -1,3 +1,5 @@
+<?php $nav_en_cours = 'update'; ?>
+
 <h1>Ajouter une amélioration</h1>
 
 
